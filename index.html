@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:title" content="Simple Chat Bot">
+    <meta name="og:description" content="chat bot creation using html css and javascript">
+    <meta name="twitter:title" content="Simple Chat Bot">
+    <meta name="twitter:description" content="chat bot creation using html css and javascript">
+    <meta name="theme-color" content="#30A97C">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <title>Simple Chat Bot</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><a href="#">GoVast</a></span>
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">GoVast</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100078936858602">Contact</a></li>
+                    <li><a href="command.html">Command</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+
+                <div class="searchBox">
+                   <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                   </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+        </div>
+       <div class="usa">
+    <div class="box">
+			<div class="container-chat">				<div class="chat-box" id="chat-box"></div>
+				<form id="chat-form">
+				  <marquee loop="2" scrollamount="7">Perintah awal ketik: “Hallo”</marquee>
+					<input type="text" placeholder="Messages..." class="input" id="chat-input" />
+					<div class="msg">
+					  <span class="material-icons-outlined">send</span>
+					</div>
+				 </form>
+		   	</div>
+	     </div>
+     </div>
+     <div class="noted">
+       <div class="all">made with ❤️ by <a class="link" href="https://www.facebook.com/profile.php?id=100078936858602">Bagas</a></div>
+     </div>
+    </nav>
+   <script type="text/javascript">
+     const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      modeToggle = document.querySelector(".dark-light"),
+      searchToggle = document.querySelector(".searchToggle"),
+      sidebarOpen = document.querySelector(".sidebarOpen"),
+      siderbarClose = document.querySelector(".siderbarClose");
+
+      let getMode = localStorage.getItem("mode");
+          if(getMode && getMode === "dark-mode"){
+            body.classList.add("dark");
+          }
+
+// js code to toggle dark and light mode
+      modeToggle.addEventListener("click" , () =>{
+        modeToggle.classList.toggle("active");
+        body.classList.toggle("dark");
+
+        // js code to keep user selected mode even page refresh or file reopen
+        if(!body.classList.contains("dark")){
+            localStorage.setItem("mode" , "light-mode");
+        }else{
+            localStorage.setItem("mode" , "dark-mode");
+        }
+      });
+
+// js code to toggle search box
+        searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+      });
+ 
+      
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+
+    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+        nav.classList.remove("active");
+    }
+});
+
+   </script>
+</body>
+ <script src="assets/js/main.js"></script>
+</html>
