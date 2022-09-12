@@ -1,0 +1,460 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease;;
+}
+
+
+/* ===== Colours ===== */
+:root{
+    --body-color: #E4E9F7;
+    --nav-color: #3EC090;
+    --side-nav: #010718;
+    --text-color: #FFFFFF;
+    --search-bar: #F2F2F2;
+    --search-text: #010718;
+    --color-link: #FFFFFF;
+    --color-text: black;
+    --icons-color: #fff;
+}
+
+body {
+  background-color: var(--body-color);
+  display: grid;
+  place-items: center;
+}
+body.dark{
+    --body-color: #18191A;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #CCC;
+    --search-bar: #242526;
+    --color-link: #5781F1;
+    --color-text: #FFF;
+    --icons-color: #FFF;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+    z-index: 100;
+}
+
+body.dark nav{
+    border: 1px solid #393838;
+
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen{
+    color: var(--text-color);
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.menu .logo-toggle{
+    display: none;
+}
+
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav-links li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-links li a::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before{
+    opacity: 1;
+}
+
+.nav-bar .darkLight-searchBox{
+    display: flex;
+    align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.dark-light i,
+.searchToggle i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox{
+    position: relative;
+}
+
+.searchBox .search-field{
+    position: absolute;
+    bottom: -85px;
+    right: 5px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-color);
+    padding: 3px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchToggle.active ~ .search-field{
+    bottom: -74px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-field::before{
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: var();
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.search-field input{
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--search-text);
+    background-color: var(--search-bar);
+}
+
+body.dark .search-field input{
+    color: var(--text-color);
+}
+
+.search-field i{
+    position: absolute;
+    color: var(--nav-color);
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+body.dark .search-field i{
+    color: var(--search-text);
+}
+
+@media (max-width: 790px) {
+    nav .nav-bar .sidebarOpen{
+        display: block;
+    }
+
+    .menu{
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: -100%;
+        top: 0;
+        padding: 20px;
+        background-color: var(--side-nav);
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu{
+        left: -0%;
+    }
+
+    nav.active .nav-bar .navLogo a{
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .menu .logo-toggle{
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-toggle .siderbarClose{
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .nav-links li a{
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+    .usa {
+       color: var(--color-text);
+       margin-left: 6px;
+       margin-right: 6px;
+}
+    .net {
+       width: 300px;
+       height: 42px;
+       border-radius: 3px;
+       font-size: 12pt;
+       padding-left: 4px;
+       padding-right: 4px;
+       outline: none;
+       margin-top: 112px;
+       margin-left: 50px;
+       border: solid -2px;
+    }
+    
+    .btn-zero {
+      width: 130px;
+      height: 40px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 10pt;
+      background-color: #3EC090;
+      border: none;
+      border-radius: 4px;
+      margin-left: 138px;
+      margin-top: 22px;
+    }
+ @media (min-width: 960px){
+    .net {
+       width: 332px;
+       height: 46px;
+       border-radius: 3px;
+       font-size: 12pt;
+       padding-left: 4px;
+       padding-right: 4px;
+       outline: none;
+       margin-top: 112px;
+       margin-left: 338px;
+       border: solid -2px;
+    }
+    
+    .btn-zero {
+      width: 130px;
+      height: 40px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 10pt;
+      background-color: #3EC090;
+      border: none;
+      border-radius: 4px;
+      margin-left: 440px;
+      margin-top: 18px;
+    }
+ }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+
+     h1 {
+      margin-bottom: 1rem;
+      text-align: center;
+}
+
+    span {
+      font-size: 0.9rem;
+}
+
+   .box {
+      width: 350px;
+}
+
+   .bot,
+   .user {
+      padding: 0.5rem 0.5rem;
+      width: fit-content;
+      color: #FFf;
+      border-radius: 0.5rem;
+      background-color: #5781F1AB;
+      max-width: 200px;
+}
+
+   .user {
+      background-color: #4A7CFF;
+      color: white;
+      align-self: end;
+}
+
+   .container-chat {
+      border: 2px solid black;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 100px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-left: 40px;
+      width: 92%;
+}
+
+   .chat-box {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      overflow-y: auto;
+}
+
+   .input {
+      width: 84%;
+      height: 42px;
+      padding: 0.5rem;
+      outline: none;
+      border-radius: 4px;
+      accent-color: #42855b;
+      font-family: "Poppins", "sans-serif";
+}
+
+   .noted, .link {
+      background: var(--color-link);
+      color: var(--color-text);
+      margin-top: 56px;
+      height: 62px;
+      text-align: center;
+}
+
+   .all {
+      padding-top: 16px;
+}
+
+          /* Responsive */
+@media (min-width: 960px){
+    .container-chat {
+      border: 2px solid black;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 100px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-left: 300px;
+      width: 388px;
+ }
+}
+
+   .msg {
+      background: #0086FF;
+      width: 42px;
+      height: 41px;
+      border-radius: 100px;
+      color: var(--icons-color);
+      padding-left: 8px;
+      font-size: 8pt;
+      padding-top: 8px;
+      float: right;
+}
